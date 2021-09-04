@@ -21,7 +21,6 @@ func createFolder(folderName string) {
 	}
 }
 
-// Copie et collage d'un fichier dans un autre dossier
 func copy(fileName string, copyFile string) (error, error) {
 	f1, err1 := os.Open(fileName)
 	f2, err2 := os.Create(copyFile)
@@ -30,7 +29,6 @@ func copy(fileName string, copyFile string) (error, error) {
 	return err1, err2
 }
 
-// ListAllPaths : les chemins existant sont séparés en deux catégories, les dossiers/sous-dossiers et les fichiers
 func ListAllPaths(root string) ([]string, []string) {
 	var pathFiles []string
 	var pathDir []string
@@ -59,11 +57,6 @@ func checkError(err error) bool {
 	return false
 }
 
-// CopyFolder : Utilisation
-// 1) Création de tous les dossiers, sous dossiers, ...
-// 2) Copie et collage de tous les fichiers dans les dossiers correspondants
-// 3) Envoie les erreurs à la fonction main du programme, en effet on anticipe un retirement prématuré de la clé USB
-//	  c'est-à-dire avant que toutes les données aient été copiées. Il faut donc arrêter ce fil d'exécution/goroutine
 func CopyFolder(pathDir []string, pathFiles []string, old string, nouv string) error {
 	for _, dir := range pathDir {
 		newName := strings.Replace(dir, old, nouv, 1)
@@ -81,7 +74,6 @@ func CopyFolder(pathDir []string, pathFiles []string, old string, nouv string) e
 	return nil
 }
 
-// CopyPaste : Copie colle l'intégralité d'un dossier dans un autre dossier
 func CopyPaste(oldFolder string, newFolder string) error {
 	root := strings.Split(oldFolder, "/")
 	newFolder = path.Join(newFolder, root[len(root)-1])
