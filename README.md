@@ -1,5 +1,4 @@
 # USBDetection
-
 This project is used to detect usb stick and copy paste its content in a new folder.
 
 You can remove USB stick during the process, algorithm shouldn't crash but wait for a new USB stick.
